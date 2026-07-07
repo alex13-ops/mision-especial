@@ -1,0 +1,891 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:#050505;
+    font-family:'Cormorant Garamond',serif;
+    overflow-x:hidden;
+    overflow-y:auto;
+    color:#fff;
+}
+
+/* ==========================
+   FONDO
+========================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+    radial-gradient(circle at top,#4a362c 0%,#231d1a 35%,#090909 75%,#000 100%);
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle,#ffffff08 1px,transparent 1px);
+
+    background-size:4px 4px;
+
+    opacity:.15;
+
+}
+
+/* ==========================
+   SECCIONES
+========================== */
+
+section{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+
+    transition:1s;
+
+    overflow-y:auto;
+
+}
+
+.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+/* ==========================
+   SOBRE
+========================== */
+
+.envelope{
+
+    width:430px;
+    max-width:95%;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:24px;
+
+    padding:45px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+/* ---------- Sobre 3D ---------- */
+
+.envelope-body{
+
+    position:relative;
+
+    width:220px;
+    height:150px;
+
+    margin:0 auto 35px;
+
+    perspective:1200px;
+
+}
+
+.envelope-flap{
+
+    position:absolute;
+
+    width:100%;
+    height:90px;
+
+    background:#ececec;
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+
+    transition:1s;
+
+    z-index:3;
+
+}
+
+.letter-preview{
+
+    position:absolute;
+
+    width:180px;
+    height:120px;
+
+    left:20px;
+    top:20px;
+
+    background:#fffdf8;
+
+    border-radius:8px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:50px;
+
+    transition:1.2s;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
+
+.envelope.open .letter-preview{
+
+    transform:
+    translateY(-90px)
+    scale(1.08);
+
+}
+
+.envelope.open{
+
+    animation:fadeEnvelope 1.4s forwards;
+
+}
+
+@keyframes fadeEnvelope{
+
+    to{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+}
+
+/* ==========================
+   TEXTOS
+========================== */
+
+.envelope h2{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+.envelope p{
+
+    color:#ddd;
+
+    font-size:1.15rem;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================
+   BOTONES
+========================== */
+
+button{
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    background:#fff;
+
+    color:#222;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 30px rgba(255,255,255,.2);
+
+}
+
+/* ==========================
+   TARJETA
+========================== */
+
+.card{
+
+    width:900px;
+    max-width:95%;
+
+    background:#f8f3e9;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    color:#43352d;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+
+    animation:appear 1s ease;
+
+}
+
+/* textura */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle,#00000008 1px,transparent 1px);
+
+    background-size:5px 5px;
+
+    pointer-events:none;
+
+}
+
+/* ==========================
+   CIELO
+========================== */
+
+.sky{
+
+    position:relative;
+
+    height:180px;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        180deg,
+        #ffd59b,
+        #ffe7be,
+        #fff8ea
+    );
+
+}
+
+/* ==========================
+   NUBES
+========================== */
+
+.cloud{
+
+    position:absolute;
+
+    background:white;
+
+    border-radius:100px;
+
+    opacity:.95;
+
+}
+
+.cloud::before,
+.cloud::after{
+
+    content:"";
+
+    position:absolute;
+
+    background:white;
+
+    border-radius:50%;
+
+}
+
+.cloud1{
+
+    width:150px;
+    height:45px;
+
+    top:40px;
+    left:-200px;
+
+    animation:clouds 28s linear infinite;
+
+}
+
+.cloud1::before{
+
+    width:60px;
+    height:60px;
+
+    left:20px;
+    top:-25px;
+
+}
+
+.cloud1::after{
+
+    width:70px;
+    height:70px;
+
+    right:20px;
+    top:-30px;
+
+}
+
+.cloud2{
+
+    width:170px;
+    height:50px;
+
+    top:110px;
+    left:-250px;
+
+    animation:clouds 38s linear infinite;
+
+}
+
+.cloud2::before{
+
+    width:70px;
+    height:70px;
+
+    left:20px;
+    top:-30px;
+
+}
+
+.cloud2::after{
+
+    width:80px;
+    height:80px;
+
+    right:25px;
+    top:-35px;
+
+}
+
+.cloud3{
+
+    width:120px;
+    height:40px;
+
+    top:20px;
+    left:-150px;
+
+    animation:clouds 45s linear infinite;
+
+}
+
+.cloud3::before{
+
+    width:50px;
+    height:50px;
+
+    left:15px;
+    top:-20px;
+
+}
+
+.cloud3::after{
+
+    width:60px;
+    height:60px;
+
+    right:15px;
+    top:-25px;
+
+}
+
+@keyframes clouds{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(1400px);
+
+    }
+
+}
+
+/* ==========================
+   CONTENIDO
+========================== */
+
+.content{
+
+    padding:60px 50px;
+
+    text-align:center;
+
+}
+
+.content h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:3.8rem;
+
+    margin-bottom:30px;
+
+    font-weight:400;
+
+}
+
+#typewriter{
+
+    font-size:1.45rem;
+
+    line-height:1.8;
+
+    white-space:pre-wrap;
+
+    min-height:180px;
+
+    margin-bottom:40px;
+
+}
+
+/* ==========================
+   FINAL
+========================== */
+
+.ending-card{
+
+    width:520px;
+    max-width:95%;
+
+    background:white;
+
+    color:#333;
+
+    padding:60px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+
+}
+
+.ending-card h1{
+
+    font-size:5rem;
+
+}
+
+.ending-card h2{
+
+    font-size:2.2rem;
+
+    margin:20px 0;
+
+}
+
+.ending-card p{
+
+    font-size:1.3rem;
+
+    line-height:1.7;
+
+}
+
+/* ==========================
+   ANIMACIONES
+========================== */
+
+@keyframes appear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px)
+        scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+    .content{
+
+        padding:35px 25px;
+
+    }
+
+    .content h1{
+
+        font-size:2.8rem;
+
+    }
+
+    #typewriter{
+
+        font-size:1.2rem;
+
+    }
+
+    .envelope{
+
+        padding:30px 20px;
+
+    }
+
+    .envelope h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .envelope p{
+
+        font-size:1rem;
+
+    }
+
+}
+
+/* La pantalla final cubre todo */
+
+.ending{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at top,#4a362c 0%,#1d1715 40%,#000 100%);
+
+    z-index:1000;
+
+    transition:opacity .8s;
+}
+
+/* ==========================
+   BOLETO DE MISIÓN
+========================== */
+
+.ticket{
+
+    width:280px;
+
+    margin:30px auto 0;
+
+    background:#fff;
+
+    color:#333;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.25);
+
+    transform:translateY(20px);
+
+    opacity:0;
+
+    animation:
+    ticketAppear 1s forwards;
+
+}
+
+
+.ticket-top{
+
+    background:#c89b5b;
+
+    color:white;
+
+    padding:18px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+
+.ticket-body{
+
+    padding:25px;
+
+}
+
+
+.ticket-body h3{
+
+    font-size:1.5rem;
+
+    margin-bottom:15px;
+
+}
+
+
+.ticket-body p{
+
+    font-size:1.1rem;
+
+    margin-bottom:20px;
+
+}
+
+
+.ticket-body span{
+
+    font-size:1.2rem;
+
+}
+
+
+.ticket:hover{
+
+    transform:
+    translateY(-8px)
+    rotate(-2deg);
+
+}
+
+
+@keyframes ticketAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px)
+        scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+}
+
+/* ==========================
+   OPTIMIZACIÓN PARA CELULAR
+========================== */
+
+@media (max-width:600px){
+
+    body{
+        overflow-y:auto;
+    }
+
+
+    section{
+
+        position:fixed;
+
+        min-height:100vh;
+
+        padding:25px 15px;
+
+        align-items:flex-start;
+
+        overflow-y:auto;
+
+    }
+
+
+    .envelope{
+
+        width:100%;
+
+        padding:30px 20px;
+
+    }
+
+
+    .envelope-body{
+
+        transform:scale(.85);
+
+        margin-bottom:10px;
+
+    }
+
+
+    .envelope h2{
+
+        font-size:1.5rem;
+
+    }
+
+
+    .envelope p{
+
+        font-size:1rem;
+
+    }
+
+
+    button{
+
+        padding:13px 28px;
+
+    }
+
+
+    .card{
+
+        width:100%;
+
+        max-height:none;
+
+        margin:20px 0;
+
+    }
+
+
+    .sky{
+
+        height:130px;
+
+    }
+
+
+    .content{
+
+        padding:35px 22px;
+
+    }
+
+
+    .content h1{
+
+        font-size:2.5rem;
+
+    }
+
+
+    #typewriter{
+
+        font-size:1.15rem;
+
+        line-height:1.6;
+
+        min-height:auto;
+
+    }
+
+
+    .ticket{
+
+        width:240px;
+
+    }
+
+
+    .ending-card{
+
+        width:100%;
+
+        padding:40px 25px;
+
+    }
+
+
+    .ending-card h1{
+
+        font-size:4rem;
+
+    }
+
+
+    .ending-card h2{
+
+        font-size:1.8rem;
+
+    }
+
+
+    .ending-card p{
+
+        font-size:1.1rem;
+
+    }
+
+
+}
