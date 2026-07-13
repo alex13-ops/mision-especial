@@ -899,3 +899,16 @@ button:hover{
 
 
 }
+
+.intro{
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.envelope{
+    margin:auto;
+}
