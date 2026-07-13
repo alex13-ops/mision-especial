@@ -21,6 +21,16 @@ body{
     color:#fff;
 }
 
+.intro{
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    box-sizing:border-box;
+    padding:20px;
+}
+
 /* ==========================
    FONDO
 ========================== */
